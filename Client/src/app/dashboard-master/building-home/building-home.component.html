@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let value of buildingdata; let i = index ">
+      <div class="card kl-card kl-xl kl-shine kl-show">
+        <div class="kl-card-block back kl-xl bg-primary kl-shadow-b kl-overlay kl-slide-in kl-show">
+          <div class="kl-background">
+            <a routerLink="/app-dashboard-master/app-building-home">	
+						<img src={{images[i]}}>
+					</a>
+          </div>
+          <div class="kl-card-overlay kl-card-overlay-split-q kl-dark kl-inverse">
+            <div class="kl-card-overlay-item">
+            </div>
+            <div class="kl-card-overlay-item"></div>
+            <div class="kl-card-overlay-item">
+              <div class="kl-figure-block">
+                <span class="kl-figure kl-txt-shadow">{{value.buildingCode}}</span>
+                <span class="kl-title">Code</span>
+              </div>
+            </div>
+            <div class="kl-card-overlay-item">
+              <div class="kl-figure-block">
+                <span class="kl-figure">{{value.totalSeats}}</span>
+                <span class="kl-title">Seats</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-block">
+          <h4 class="card-title">{{value.buildingName}}</h4>
+          <a data-toggle="modal" href="#update{{i}}" class="increment1" (click)="increment1(i)">
+					<img class="addlocation" src='../../../assets/autoupdation.png'>
+				</a>
+        </div>
+      </div>
+      <div class="modal fade" id="update{{i}}" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="modalLabelLarge2"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+              <h4 class="modal-title" id="modalLabelLarge2">Update {{value.buildingName}} Location</h4>
+            </div>
+            <div class="modal-body card" *ngIf="temp1==i">
+              <app-update-building [building]="value"></app-update-building>
+            </div>
+            <div class="modal-footer ">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="close2()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+
+      <div class="hovereffect">
+        <a>		
+							<img class="img-responsive location1" src="../../../assets/back1.png">
+						</a>
+        <div class="overlay">
+          <a class="info" routerLink="/app-dashboard-master/app-home-master">Back</a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

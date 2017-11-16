@@ -1,0 +1,113 @@
+<div class="container" >
+	<div class="row" > 
+		<div class="col-md-3 home" *ngFor="let value of locationData; let i = index ">
+			<div class="card kl-card kl-xl kl-shine kl-show">
+				<div class="kl-card-block back kl-xl bg-primary kl-shadow-b kl-overlay kl-slide-in kl-show">
+					<div class="kl-background">
+						<div *ngIf="images[i] ;  else elseBlock ">
+							<a id="detail" (click)="gotoDetail(value)">	<img class=" img-responsive location" src={{images[i]}}></a>
+						</div>
+						<ng-template #elseBlock>
+							<a  (click)="gotoDetail(value)">		<img class="img-responsive location" src="../../../assets/default.jpeg"></a>
+						</ng-template>
+					</div>
+					<div class="kl-card-overlay kl-card-overlay-split-q kl-dark kl-inverse">
+						<div class="kl-card-overlay-item">
+						</div>
+						<div class="kl-card-overlay-item"></div>
+						<div class="kl-card-overlay-item">
+							<div class="kl-figure-block">
+								<span class="kl-figure kl-txt-shadow">{{value.csoOwnerName}}</span>
+								<span class="kl-title">CSO</span>
+							</div>
+						</div>
+						<div class="kl-card-overlay-item">
+							<div class="kl-figure-block">
+								<span class="kl-figure">{{value.totalSeats}}</span>
+								<span class="kl-title">Seats</span>
+							</div>
+						</div>
+					</div>
+				</div>  
+				<div class="card-block">
+					<h5 class="card-title">{{value.locationName}}</h5>
+					<a  data-toggle="modal" href="#flipFlop{{i}}" class="increment" (click)="increment(i)"  >
+						<img class="img-responsive addlocation" src='../../../assets/plus.svg'>
+					</a>
+					<a  data-toggle="modal" href="#update{{i}}" class="increment1" (click)="increment1(i)"  >
+<!-- //<<<<<<< HEAD
+ -->					<img data-trigger="hover" data-placement="left" data-content="Add building" class="addlocation" src='../../../assets/autoupdation.png'>
+					</a>
+					<button class="btn" id="buton{{i}}" (click)=changeStatus(value)>{{value.status}}</button>
+
+				</div>
+			</div>
+			<div class="modal fade" id="flipFlop{{i}}" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="modalLabelLarge" aria-hidden="true" >
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="modalLabelLarge">Add Building at {{value.locationName}}</h4>
+						</div>
+						<div class="modal-body card" *ngIf="temp===i" >									
+							<add-building [location]="value"></add-building>			
+						</div>
+						<div class="modal-footer ">
+							<button type="button" class="btn btn-primary" data-dismiss="modal" (click)="close()">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="update{{i}}" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="modalLabelLarge2" aria-hidden="true" >
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="modalLabelLarge2">Update {{value.locationName}} Location</h4>
+						</div>
+						<div class="modal-body card" *ngIf="temp1===i" >									
+							<app-update-location [location]="value" ></app-update-location>
+						</div>
+						<div class="modal-footer ">
+							<button type="button" class="btn btn-primary" data-dismiss="modal" class="close2" (click)="close2()">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+						    <div class="hovereffect">
+						<a>		
+							<img class="img-responsive location1" src="../../../assets/add-location.svg">
+						</a>
+						<div class="overlay">
+           <a class="info" data-toggle="modal" href="#col">Add Location</a>
+       
+					</div>
+						</div>
+
+			
+						<div class="modal fade" id="col" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="modalLabelLarge1" aria-hidden="true" >
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h4 class="modal-title" id="modalLabelLarge1">Add New Location</h4>
+									</div>
+									<location-structure></location-structure>						
+									<div class="modal-footer ">
+										<button type="button" class="btn btn-primary" data-dismiss="modal" class="close1" (click)="close1()">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+			</div>
+		</div>
+	</div>
+

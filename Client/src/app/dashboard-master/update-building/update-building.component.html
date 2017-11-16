@@ -1,0 +1,29 @@
+<div class="container">
+<div class="container  p-3 request-form col-lg-6 ">  <div [hidden]="submitted">
+    <h1>BUILDING</h1>
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm" >
+    <!--    <div class="form-group">
+        <label for="buildingCode">{{model.buildingCode}}</label>
+        <input type="text" class="form-control" id="buildingCode" required [(ngModel)]="model.buildingCode" name="buildingCode" #buildingCode="ngModel">
+        <div [hidden]="buildingCode.valid || buildingCode.pristine" class="alert alert-danger">
+          Please Specify Building Code !
+        </div>
+      </div> -->
+      <div class="form-group">
+        <label for="buildingName">Building Name</label>
+        <input type="text" class="form-control" id="buildingName" required [(ngModel)]="model.buildingName" name="buildingName" #buildingName="ngModel">
+        <div [hidden]="buildingName.valid || buildingName.pristine" class="alert alert-danger">
+          Please Specify Building Name !
+        </div>
+      </div>
+ <div class="form-group">
+        <label for="totalSeats">Total Seats</label>
+        <input type="text" class="form-control" id="totalSeats" required [(ngModel)]="model.totalSeats" name="totalSeats" #totalSeats="ngModel">
+        <div [hidden]="totalSeats.valid || totalSeats.pristine" class="alert alert-danger">
+          Please Specify Building Code !
+        </div>
+      </div>
+      <button id="buttonUpdate" class="btn btn-success"  [disabled]="!heroForm.form.valid" (click)="updateBuilding(model);heroForm.reset()">UPDATE</button>
+    </form>
+  </div>
+</div>

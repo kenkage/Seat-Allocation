@@ -1,0 +1,153 @@
+
+/* You can add global styles to this file, and also import other style files */
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+ }
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+} 
+#headColor{
+  background-color: #444;
+}
+.container {
+  padding-top: 5em;
+}
+.request-form {
+ 
+  padding-top: 2em;
+    background: #fafafa;
+    box-shadow: rgba(0,0,0,0.3) 20px 20px 20px;
+}
+#head {
+  padding-bottom: 20px;
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+  text-align: center;
+}
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+body {
+  margin: 2em;
+}
+
+a {
+  cursor: pointer;
+  cursor: hand;
+}
+ button {
+  font-family: Arial;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+button:disabled {
+  cursor: auto;
+}
+
+/* Navigation link styles */
+ nav a {
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-right: 10px;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #eee;
+  border-radius: 4px;
+}
+nav a:visited, a:link {
+  color: #607D8B;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+nav a.active {
+  color: #039be5;
+} 
+
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+} 
+.sbmt {
+  background-color: #5cb85c ;
+  border: none;
+  color: #fafafa ;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'BenchNine', Arial, sans-serif;
+  font-size: 1em;
+  font-size: 22px;
+  line-height: 1em;
+  margin: 15px 40px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.sbmt:before,
+.sbmt:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.sbmt:before {
+  border-color: #5cb85c ;
+  border-top-width: 2px;
+  left: 0px;
+  top: -5px;
+}
+
+.sbmt:after {
+  border-bottom-width: 2px;
+  border-color: #5cb85c ;
+  bottom: -5px;
+  right: 0px;
+}
+
+
+.sbmt.hover {
+  background-color: #5cb85c ;
+}
+
+.sbmt:hover:before,
+.sbmt.hover:before,
+.sbmt:hover:after,
+.sbmt.hover:after {
+  height: 100%;
+  width: 100%;
+}
+.modal  {
+/*   display: block;*/
+padding-right: 0px;
+background-color: rgba(4, 4, 4, 0.8);
+}
+.modal-dialog {
+top: 20%;
+    width: 100%;
+}
+.modal-content {
+    border-radius: 0px;
+    border: none;
+}
+.modal-body {
+        background-color: #0f8845 ;
+        text-align: center;
+        
+color: white;
+    }

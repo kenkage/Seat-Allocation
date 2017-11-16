@@ -1,0 +1,31 @@
+<div class="container ">
+<div class="container  p-3 request-form col-lg-6 ">  <div [hidden]="submitted">
+    <h1>ADD BUILDING</h1>
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm" >
+       <div class="form-group">
+        <label for="buildingCode">Building Code</label>
+        <input type="text" placeholder="Enter the Building Code (in digits)" class="form-control" onkeypress="return event.charCode >= 48" onkeypress="return event.charCode <= 57" id="buildingCode" required [(ngModel)]="model.buildingCode" name="buildingCode" #buildingCode="ngModel" >
+        <div [hidden]="buildingCode.valid || buildingCode.pristine" class="alert alert-danger">
+          Please Specify Building Code !
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="buildingName">Building Name</label>
+        <input type="text" placeholder="Enter the Building Name" class="form-control" id="buildingName" required [(ngModel)]="model.buildingName" name="buildingName" #buildingName="ngModel">
+        <div [hidden]="buildingName.valid || buildingName.pristine" class="alert alert-danger">
+          Please Specify Building Name !
+        </div>
+      </div>
+        <div class="form-group">
+        <label for="totalSeats">Total Seats</label>
+        <input type="number" placeholder="Enter the Seats (in digits) " min="0"  onkeypress="return event.charCode >= 48"  class="form-control" id="totalSeats" required [(ngModel)]="model.totalSeats" name="totalSeats" #totalSeats="ngModel">
+        <div [hidden]="totalSeats.valid || totalSeats.pristine" class="alert alert-danger">
+          Please Specify Seat Numbers !
+        </div>
+      </div>
+
+
+      <button class="btn btn-success"  [disabled]="!heroForm.form.valid" (click)="addBuilding();heroForm.reset()">ADD</button>
+    </form>
+  </div>
+</div>

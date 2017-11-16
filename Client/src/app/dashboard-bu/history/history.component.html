@@ -1,0 +1,67 @@
+<div class="container" id="dis" ng-controller="datCtrl">
+  <!-- history table for Business user -->
+  
+  <table class="table table-striped table-responsive shade">
+    <thead class="thead-inverse">
+      <tr class="requestTable">
+        <th>Request No.</th>
+        <th>Location Name</th>
+        <th>CC Code</th>
+        <th>Seats Required</th>
+        <th>Approved Seats</th>
+        <th>Request Date</th>
+        <th>Approving Authority</th>
+        <th>Status</th>
+        <th>View History</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{request.locationStructures.locationName}}</td>
+        <td>{{request.ccCode}}</td>
+        <td>{{request.noOfseats}}</td>
+        <td *ngIf='request.currentAllocatedseats==0'> - </td>        
+        <td *ngIf='request.currentAllocatedseats!=0'>{{request.currentAllocatedseats}}</td>
+        <td>{{request.requestedOn|date: "dd.MM.y"}}</td>
+        <td>{{request.approvingAuthorities.empName}}</td>
+        <td>{{request.status}}</td>
+        <td>
+          <button class="btn btn-info" data-toggle="modal" data-target="#myModal"  id="transc" (click)='onViewTransaction(request.requestId)'>View</button>
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Transaction Information</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="container">
+                    <div class="row">
+                      <table class="table table-striped">
+                        <thead class="thead-inverse">
+                          <tr class="requestTable">
+                            <th>Action Date</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of history">
+                            <td>{{item.dateOfTransaction|date: "dd.MM.y"}}</td>
+                            <td>{{item.typeOfTransaction}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

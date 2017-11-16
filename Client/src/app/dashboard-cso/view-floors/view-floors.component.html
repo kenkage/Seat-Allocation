@@ -1,0 +1,65 @@
+
+<div class="container" ng-controller="datCtrl"> 
+  <div class="row">
+<div class="main-container">
+  <div class="fresh-table full-color-azure full-screen-table">
+
+      <div class="fixed-table-toolbar">
+        <div class="pull-right search"><input class="form-control" type="text" placeholder="Search By Building" [(ngModel)] = "searchItem" (ngModelChange) = "search()"></div>
+      </div>
+      
+      <table id="fresh-table" class="table-responsive table">
+          <thead>
+            <tr>
+              <th  data-sortable="true" >Building</th>
+              <th>Floor</th>
+              <th>Capacity</th>
+              <th>Total Vacant</th>
+              <th>Open Allocated</th>
+              <th>Closed Allocated</th>
+              <th>ABV</th>
+              <th>Open Vacant</th>
+              <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let floor of  floors">
+                  <td>{{floor.buildingStructures.buildingName}}</td>
+                  <td>{{floor.floorName}}</td>
+                  <td>{{floor.totalSeats}}</td>
+                  <td>{{floor.totalVacantSeats}}</td>
+                  <td>{{floor.openAllocatedSeats}}</td>
+                  <td>{{floor.closedAllocatedSeats}}</td>            
+                  <td>{{floor.abvSeats}}</td>
+                  <td>{{floor.openVacantSeats}}</td>
+                  <td><button type="button" class="btn  btn-outline-primary" [routerLink]="['../edit-floor',floor.floorCode]" >Edit<i class="fa fa-plus" aria-hidden="true"></i></button></td>
+              </tr>
+          </tbody>
+      </table>
+      <!-- <div class="fixed-table-pagination"> -->
+        <!-- <div class="pull-left pagination-detail">
+          <span class="pagination-info"></span>
+          <span class="page-list">
+            <span class="btn-group dropup">
+            <button type="button" class="btn btn-default  dropdown-toggle" data-toggle="dropdown">
+              <span class="page-size">25</span> 
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li class="active"><a href="javascript:void(0)">25</a></li>
+              <li><a href="javascript:void(0)">50</a></li>
+              <li><a href="javascript:void(0)">100</a></li>
+            </ul>
+            </span> 
+          </span>
+        </div> -->
+        <!-- <div class="pull-right pagination">
+          <ul class="pagination">
+              <pagination-controls class="pag-align" (pageChange)="p=$event"></pagination-controls>
+          </ul>
+        </div> -->
+      <!-- </div> -->
+  </div>   
+</div>
+  </div>
+</div>

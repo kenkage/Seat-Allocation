@@ -1,0 +1,31 @@
+<main class="container pt-5">
+
+
+  <table class="table table-responsive table-hover centered-form">
+    <thead class="table-inverse">
+      <tr>
+        <th>Entity</th>
+        <th>Building</th>
+        <th>Seats</th>
+        <th>Requested By</th>
+        <th>Requested date</th>
+        <th>Status</th>
+
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of data2">
+      <tr class="tablerow">
+
+        <td scope="row">{{item.entity|uppercase}}</td>
+        <td>{{BuildingName}}</td>
+
+        <td>{{item.noOfseats}}</td>
+        <td>{{item.requestedBy}}</td>
+        <td>{{item.requestedOn | date: 'dd/MM/yyyy' }} </td>
+        <td>{{item.status}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</main>

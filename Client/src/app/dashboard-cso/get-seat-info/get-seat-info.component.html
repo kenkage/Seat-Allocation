@@ -1,0 +1,81 @@
+
+
+<!-- dropdown section for selecting floors -->
+<div class="dropdown dro">
+    <a class="btn btn-danger dropdown-toggle" href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false" align="center">
+                      Select Floors
+     </a>
+
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" *ngFor="let floor of floorDetails" (click)="getFloor(floor)">{{floor.floorName}}</a></li>
+    </ul>
+
+</div>
+<!-- showing seat details-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card firstCard">
+                <div class="card-content">
+                    <div class="card-header-blue">
+                        <h1 class="card-heading">Closed ODC</h1>
+                    </div>
+                    <div class="card-body" *ngIf="floors">
+                        <label class="totalSeats">Total Closed  Seats</label>
+                        <input type="text"  class="input" placeholder="Total Seats" value="{{floors.abvSeats+floors.closedAllocatedSeats}}"disabled>
+                        <br>
+                        <br>
+                        <label id="abvSeatsLabel">ABV Seats</label>
+                        <input type="text"class="input" placeholder="Vacant Seats" value="{{floors.abvSeats}}"disabled>
+                        <br>
+                        <button class="btn btn-danger" type="submit" data-toggle="modal" data-target=".bs-example-modal-lg" (click)=onCloseAllocation()>Allocate</button>
+                        <div class=" modal  fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">        
+                                <div class="modal-body">      
+                                <h4>Seats Allocated Successfully</h4>
+                                <hr>
+                                <button class="btn btn-success" data-dismiss="modal" (click)="navigateButton()">Close</button>      
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- showing seat details-->
+        <div class="col-md-6">
+            <div class="card firstCard">
+                <div class="card-content">
+                    <div class="card-header-blue">
+                        <h1 class="card-heading">Open ODC</h1>
+                    </div>
+                    <div class="card-body" *ngIf="floors">
+                        <label class="totalSeats">Total Open Seats</label>
+                        <input type="text"class="input" placeholder="Total Seats" value="{{floors.openVacantSeats+floors.openAllocatedSeats}}"disabled>
+                        <br>
+                        <br>
+                        <label id="vacantSeats">Vacant Seats</label>
+                        <input type="text"class="input" placeholder="Vacant Seats" value="{{floors.openVacantSeats}}"disabled>
+
+                        <br>
+                        <button class="btn btn-danger" type="submit" data-toggle="modal" data-target=".bs-example-modal-lg" (click)=onOpenAllocation()>Allocate</button>
+                        <div class=" modal  fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">        
+                                <div class="modal-body">      
+                                <h4>Seats Allocated Successfully</h4>
+                                <hr>
+                                <button class="btn btn-success" data-dismiss="modal" (click)="navigateButton()">Close</button>      
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

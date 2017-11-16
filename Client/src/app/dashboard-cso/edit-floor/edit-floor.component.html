@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="container card p-3 request-form col-lg-6 ">
+    <div [hidden]="submitted">
+      <h1 id="head">Edit Floor</h1>
+
+      <form #heroForm="ngForm" *ngIf="model.buildingStructures">
+        <div class="form-group form-inline">
+          <label for="buidingName" class="col-sm-4 "><span>Building Name</span></label>
+          <input type="text" disabled class="form-control col-sm-6" required [(ngModel)]="model.buildingStructures.buildingName" name="buildingStructures.buildingName"
+            #buildingStructures.buildingName="ngModel">
+          <label><small>{{vacantSeatsInBuilding}} Seats</small> </label>
+        </div>
+
+        <div class="form-group form-inline">
+          <label for="floorName" class="col-sm-4 "><span>Floor Name</span></label>
+
+          <input type="text" class="form-control col-sm-6" id="floorName" required [(ngModel)]="model.floorName" name="floorName" #floorName="ngModel">
+
+          <small [hidden]="floorName.valid || floorName.pristine" class="alert alert-danger">
+            Please Specify Floor Name
+          </small>
+        </div>
+
+        <div class="form-group form-inline">
+          <label for="openVacantSeats" class="col-sm-4 "><span>Open ODC Seats</span></label>
+
+          <input type="number" min="0" onkeypress="return event.charCode >= 48" class="form-control col-sm-6" id="openVacantSeats"
+            required [(ngModel)]="model.openVacantSeats" name="openVacantSeats" #openVacantSeats="ngModel" (change)=checkSeats()>
+
+          <small [hidden]="openVacantSeats.valid || openVacantSeats.pristine" class="alert alert-danger">
+            Please Specify Seats Required !
+          </small>
+        </div>
+
+        <div class="form-group form-inline">
+          <label for="abvSeats" class="col-sm-4 ">Closed ODC Seats</label>
+          <input type="number" min="0" onkeypress="return event.charCode >= 48" class="form-control col-sm-6" id="abvSeats" required
+            [(ngModel)]="model.abvSeats" name="abvSeats" #abvSeats="ngModel" (change)=checkSeats()>
+
+          <small [hidden]="abvSeats.valid || abvSeats.pristine" class="alert alert-danger">
+            Please Specify Seats Required !
+          </small>
+        </div>
+        <div class='text-center'>
+          <button class="btn btn-success" [disabled]="!heroForm.form.valid" (click)=updateFloor() data-toggle="modal" data-target=".bs-example-modal-lg">Add</button>
+          <div class="bs-example-modal-lg modal  fade" tabindex="-1" data-backdrop='static' role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <h4>{{msg}}</h4>
+                  <hr>
+                  <button class="btn btn-success" data-dismiss="modal" (click)=navigateButton() data-target=".bs-example-modal-lg" data-toggle="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

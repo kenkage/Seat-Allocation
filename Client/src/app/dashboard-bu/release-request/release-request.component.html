@@ -1,0 +1,49 @@
+<div class="container" id="dis" ng-controller="datCtrl">
+    <!--Request Release for Business user -->
+    <table class="table table-striped table-responsive shade">
+      <thead class="thead-inverse">
+        <tr class="requestTable">
+          <th>Request Id</th>
+          <th>Requested By</th>
+          <th>Allocated Seats</th>  
+          <th>Release Seats</th>                     
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of requests">
+            <td>{{request.requestId}}</td>
+          <td>{{request.requestedBy}}</td>
+          <td>{{request.currentAllocatedseats}}</td>
+          <td>
+            <button class="btn btn-info" data-toggle="modal" data-target="#myModal"  id="transc">View</button>
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+         
+         <div class="text-center">
+           <h3 id='head' class="modal-title"> RELEASE SEATS </h3>
+         </div>
+                   
+         
+       </div>
+       <div class="modal-body">
+        <input type="text" [(ngModel)]="seats" onkeypress="return event.charCode >= 48" onkeypress="return event.charCode <= 57" class="form-control col-sm-6" id="noOfseats" required [(ngModel)]="noOfseats" name="noOfseats" >
+         <h5 id="dis">
+           <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+               <input type="checkbox"  class="custom-control-input">
+               
+             </label>
+        </h5></div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-success" id="release" (click)=releaseSeats(request) >Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

@@ -1,0 +1,61 @@
+
+<div class="container">
+ <div id="ma" class="main">
+     <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 textboxes">
+     </div>
+ <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 ">
+ <form >
+   <h3>
+   <span class="badge badge-pill badge-success">
+   Choose Location</span></h3>
+   <select  [(ngModel)]="locationname" name="search" list="channel" (change)="getfloor()" class="form-control " >
+     <option disabled
+     value="">Select a location</option>
+     <option *ngFor="let value of location" value="{{value.locationCode}}">{{value.locationName}}</option>
+   </select>
+ </form>
+ </div>
+ <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 ">
+ <div *ngIf="locationname">
+ <form >
+     <h3>
+         <span class="badge badge-pill badge-success">
+         Choose Building</span></h3>
+   <select  [(ngModel)]="floor" name="search" list="channel" (change)="getroom()" class="form-control " >
+     <option disabled
+     value="">Select a location</option>
+     <option *ngFor="let value of buildings" value="{{value.buildingCode}}">{{value.buildingName}}</option>
+   </select>
+ </form>
+ </div>
+  </div>
+  <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 textboxes">
+   </div>
+ </div>
+ 
+</div>
+<div class="container">
+   <div id="ma" class="main">
+ <div *ngIf="token==1">
+     <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 textboxes">
+       </div>
+ <div class="main col-md-8 col-xs-8 col-sm-8 col-lg-8">
+   <div style="display: block" >
+     <canvas class="main1" baseChart
+             [datasets]="barChartData"
+             [labels]="barChartLabels"
+             [options]="barChartOptions"
+             [legend]="barChartLegend"
+             [chartType]="barChartType"
+             (chartHover)="chartHovered($event)"
+             (chartClick)="chartClicked($event)"></canvas>
+   </div>
+ <!--   <button (click)="randomize()">Update</button> -->
+ </div>
+ <div class="col-md-2 col-xs-2 col-sm-2 col-lg-2 textboxes">
+   </div>
+ </div>
+ 
+</div>
+
+</div>

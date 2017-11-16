@@ -1,0 +1,51 @@
+<main class="container pt-5">
+  <table class="table table-responsive table-hover centered-form">
+    <thead class="table-inverse">
+      <tr>
+        <th>Entity</th>
+        <th>CC Code</th>
+        <th>Building</th>
+        <th>Seats</th>
+        <th>Requested By</th>
+        <th>Requested date</th>
+        <th>Forward</th>
+        <th>Reject</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of data2">
+      <tr class="tablerow">
+        <td scope="row">{{item.entity}}</td>
+        <td>{{item.ccCode}}</td>
+        <td>{{BuildingName}}</td>
+        <td>{{item.noOfseats}}</td>
+        <td>{{item.requestedBy}}</td>
+        <td>{{item.requestedOn | date: 'dd/MM/yyyy'}} </td>
+        <td><button type="submit" class="btn btn-success accept" (click)=acceptRequest(item)> Accept </button>
+        </td>
+        <th><button type="submit" class="btn btn-danger acceptBtn" data-toggle="modal" data-target="#myModal">Reject</button></th>
+        <div class="modal fade mdl" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+              </div>
+              <div class="modal-body">
+                <form action="" method="post">
+                  <div class="input-group">
+
+                    <input type="text" #nam class="form-control" placeholder="Write">
+                  </div>
+                  <br />
+                  <button style=" background: #4a5564 " type="submit" value="sub" name="sub" class="btn btn-primary rjt" (click)="rejectRequest(item,nam.value)"
+                    data-dismiss="modal" target=_blank><i class="fa fa-share"></i>Send Reason!</button>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</main>

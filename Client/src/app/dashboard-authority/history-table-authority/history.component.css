@@ -1,0 +1,17 @@
+tr .tablerow:hover {
+  background-color: #CFCFC6;
+}
+main{
+  padding-left: 100px;
+}
+th{
+  height: 1px;
+  width:150px;
+}
+
+.centered-form{
+  box-shadow: rgba(0,0,0, 0.3) 20px 20px 20px;
+}
+.table{
+  width:995px;
+}

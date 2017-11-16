@@ -1,0 +1,35 @@
+<div class="container" ng-controller="datCtrl">
+  <div class="row">
+    <!-- table of pending requests -->
+    <table class="table table-striped table-responsive shadow">
+      <thead class="thead-inverse">
+        <tr class="requestTable">
+          <th class="head">Entity</th>
+          <th class="head">CC Code</th>
+          <th class="head">BuildingName</th>
+          <th class="head">Seats Required</th>
+          <th class="head">Requested By</th>
+          <th class="head">Request Date</th>
+          <th col-span="2" id="action">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let request of requests">
+          <td>{{request.entity}}</td>
+          <td>{{request.ccCode}}</td>
+          <td>{{request.buildingStructures.buildingName}}</td>
+          <td>{{request.noOfseats}}</td>
+          <td>{{request.requestedBy}}</td>
+          <!-- Don't Forget To Print EmpName when available -->
+          <td>{{request.requestedOn|date: "dd.MM.y"}}</td>
+          <td>
+            <button type="button" id='ForwardButton' class="btn btn-primary" [routerLink]="['./get-seat-info',request.requestId]">View Seats</button>
+            <button type="button" id='RejectButton' class="btn btn-danger" (click)="onReject(request)">Reject</button>
+          </td>
+        </tr>
+      </tbody>
+      <td colspan="7" *ngIf="error">No Pending Requests For Approval</td>
+    </table>
+  </div>
+</div>
+<router-outlet></router-outlet>

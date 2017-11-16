@@ -1,0 +1,18 @@
+#action {
+  text-align: center;
+  width:250px;
+ }
+ .shadow{
+ 
+  box-shadow: rgba(0,0,0,0.3) 20px 20px 20px;
+ }
+ 
+ .head{
+  width:180px;
+ }
+ .row{
+  padding-top:50px;
+ }
+ .table{
+   margin-left:30px;
+ }
