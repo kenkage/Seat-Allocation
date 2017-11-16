@@ -1,4 +1,3 @@
-# Seat-Allocation Project
 
 ## Development server
 
